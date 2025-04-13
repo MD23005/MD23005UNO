@@ -8,6 +8,10 @@ setup(
     long_description_content_type='text/markdown',
     author='Ronald Manzano',
     author_email='md23005@ues.edu.sv',
-    url=
+    url='https://github.com/MD23005/MD23005UNO.git',
+    install_requires=[
+        'numpy',
+        'typing'
+    ]
     
 )
