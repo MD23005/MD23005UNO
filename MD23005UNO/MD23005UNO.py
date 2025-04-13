@@ -99,23 +99,23 @@ class MD23005UNO:
                 if abs(ab[j,i]) > abs(ab[pivote,i]):
                     pivote = j
                 
-        #Verificar que el pivote no sea cero
-        if abs(ab[pivote,i]) < tolerancia:
-            raise ValueError("El pivote máximo es 0, la matriz no es singular y no se puede resolver por método de Gauss-Jordan")
+            #Verificar que el pivote no sea cero
+            if abs(ab[pivote,i]) < tolerancia:
+                raise ValueError("El pivote máximo es 0, la matriz no es singular y no se puede resolver por método de Gauss-Jordan")
         
-        #Intercambiar filas si es necesario
-        if pivote != i:
-            ab[[i,pivote]] = ab[[pivote,i]]
+            #Intercambiar filas si es necesario
+            if pivote != i:
+                ab[[i,pivote]] = ab[[pivote,i]]
         
-        #normalizar la fila del pivote
-        piv = ab[i,i]
-        ab[i] = ab[i]/piv
+            #normalizar la fila del pivote
+            piv = ab[i,i]
+            ab[i] = ab[i]/piv
         
-        #Eliminar coeficientes en la columna del pivote
-        for j in range(n):
-            if j != i:
-                factor = ab[j,i]
-                ab[j] = ab[j] - factor * ab[i]
+            #Eliminar coeficientes en la columna del pivote
+            for j in range(n):
+                if j != i:
+                    factor = ab[j,i]
+                    ab[j] = ab[j] - factor * ab[i]
                 
         
         soluciones = ab[:,n].reshape(-1)
