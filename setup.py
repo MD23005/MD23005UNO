@@ -1,7 +1,7 @@
 from setuptools import setup
 setup(
     name='MD23005UNO',
-    version='0.2',
+    version='0.3',
     packages=['MD23005UNO'],
     description='Librería que contiene diferentes métodos para resolver sistemas de ecuaciones lineales',
     long_description=open('README.md',encoding='utf-8').read(),
