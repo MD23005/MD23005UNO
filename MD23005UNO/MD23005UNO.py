@@ -1,7 +1,7 @@
 import numpy as np
 from typing import Callable
 
-tolerancia = 1e-10
+tolerancia = 1e-6
 max_iter = 1000
 
 class MD23005UNO:
