@@ -210,7 +210,7 @@ class MD23005UNO:
                 suma = 0
                 for k in range(i):
                     suma += L[i,k] * U[k,j]
-            U[i,j] = a[i,j] - suma
+                U[i,j] = a[i,j] - suma
         
             #Para los elementos de L en la columna i
             for j in range(i+1,n):
@@ -223,7 +223,7 @@ class MD23005UNO:
                 for k in range(i):
                     suma += L[j,k] * U[k,i]
                 
-            L[j,i] = (a[j,i] - suma) / U[i,i]
+                L[j,i] = (a[j,i] - suma) / U[i,i]
         
         return L,U
 
