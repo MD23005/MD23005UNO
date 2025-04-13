@@ -1,7 +1,7 @@
 import numpy as np
 from typing import Callable
 
-tolerancia = 1e-6
+tolerancia = 1e-10
 max_iter = 1000
 
 class MD23005UNO:
@@ -51,7 +51,7 @@ class MD23005UNO:
             for j in range(i+1,n):
                 factor = ab[j,i] / ab[i,i]
                 
-            ab[j,i:] = ab[j,i:] - factor * ab[i,i:]
+                ab[j,i:] = ab[j,i:] - factor * ab[i,i:]
             
         
         #Sustitución hacia atrás
@@ -168,14 +168,14 @@ class MD23005UNO:
         for i in range(n):
             a_copy = a.copy()
         
-        #Reemplazar la columna i con el vector de términos independientes
-        a_copy[:,i] = b
+            #Reemplazar la columna i con el vector de términos independientes
+            a_copy[:,i] = b
         
-        #Calcular el determinante de la matriz modificada
-        det_a_copy = MD23005UNO.determinante(a_copy)
+            #Calcular el determinante de la matriz modificada
+            det_a_copy = MD23005UNO.determinante(a_copy)
         
-        #guardar la solución en el vector de soluciones
-        x[i] = det_a_copy / det
+            #guardar la solución en el vector de soluciones
+            x[i] = det_a_copy / det
         
         return x
 
@@ -267,10 +267,10 @@ class MD23005UNO:
             for j in range(i+1,n):
                 suma += U[i,j] * x[j]
             
-        if abs(U[i,i]) < tolerancia:
-            raise ValueError("La matriz U es singular, no tiene solución única")
+            if abs(U[i,i]) < tolerancia:
+                raise ValueError("La matriz U es singular, no tiene solución única")
         
-        x[i] = (y[i] - suma) / U[i,i]
+            x[i] = (y[i] - suma) / U[i,i]
         
         return x
 
@@ -435,12 +435,12 @@ class MD23005UNO:
                 #Calcular la suma con índices mayores que i
                 suma2 = sum(a[i,j] * x_ant[j] for j in range(i+1,n))
             
-            #Actualizar el valor de xi
-            x[i] = (b[i] - suma1 - suma2) / a[i,i]
+                #Actualizar el valor de xi
+                x[i] = (b[i] - suma1 - suma2) / a[i,i]
             
-        #verificar convergencia
-        if np.linalg.norm(x-x_ant) < tol:
-            return x, cant, True
+            #verificar convergencia
+            if np.linalg.norm(x-x_ant) < tol:
+                return x, cant, True
     
         #Si se alcanza el número máximo de iteraciones
         print(f"Se alcanzó el número máximo de iteraciones ({max_i}), sin alcanzar la convergencia")
