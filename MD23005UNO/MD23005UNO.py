@@ -1,7 +1,7 @@
 import numpy as np
 from typing import Callable
 
-tolerancia = 1e-6
+tolerancia = 1e-10
 max_iter = 1000
 
 class MD23005UNO:
@@ -43,13 +43,14 @@ class MD23005UNO:
             if abs(ab[max_item,i]) < tolerancia:
                 raise ValueError("La matriz no debe ser singular, su contenido no pueden ser ceros")
         
-        #Se intercambian filas si es requerido
-        if max_item != i:
-            ab[[i,max_item]] = ab[[max_item,i]]
+            #Se intercambian filas si es requerido
+            if max_item != i:
+                ab[[i,max_item]] = ab[[max_item,i]]
             
-        #Eliminación de Gauss
-        for j in range(i+1,n):
-            factor = ab[j,i] / ab[i,i]
+            #Eliminación de Gauss
+            for j in range(i+1,n):
+                factor = ab[j,i] / ab[i,i]
+                
             ab[j,i:] = ab[j,i:] - factor * ab[i,i:]
             
         
@@ -89,8 +90,6 @@ class MD23005UNO:
         b = b.reshape(-1,1)
         ab = np.concatenate((a,b),axis=1)
     
-        #mostrar la matriz aumentada
-        print(f"Matriz aumentada: \n {ab} \n")
     
         #Aplicar la eliminación de gauss-jordan
         for i in range(n):
