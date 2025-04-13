@@ -155,7 +155,7 @@ class MD23005UNO:
             raise ValueError("La matriz A debe ser cuadrada")
     
         #Calcular el determinante de la matriz
-        det = determinante(a)
+        det = MD23005UNO.determinante(a)
     
         #verificar que el determinante sea distinto a cero
         if abs(det) < tolerancia:
